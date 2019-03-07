@@ -1,0 +1,34 @@
+<h1>Programa de Colas</h1>
+<hr>
+<div class="alert alert-danger" role="alert" *ngIf="error.status === true">
+    {{error.message}}
+</div>
+<div class="row">
+    <div class="col-6">
+
+        <h4>Opciones</h4>
+        <ul class="list-group">
+            <a [routerLink]="[ '/publico']" class="list-group-item list-group-item-action">
+                Pantalla publica
+            </a>
+            <a [routerLink]="[ '/nuevo-ticket']" class="list-group-item list-group-item-action">
+              Crear Tickets
+            </a>
+        </ul>
+
+    </div>
+
+    <div class="col-6">
+
+        <h4>Configurar escritorio</h4>
+
+        <div action="escritorio.html">
+            <input #txtEscritorio (keyup)="entrar(txtEscritorio.value)" name="escritorio" type="number" class="form-control" placeholder="Escritorio" autofocus required>
+
+            <br>
+            <button type="button" (click)="entrar(txtEscritorio.value)" class="btn btn-primary btn-block">
+                Ingresar
+            </button>
+        </div>
+    </div>
+</div>
