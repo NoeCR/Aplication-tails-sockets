@@ -47,6 +47,8 @@ export default class Server {
             socket.nuevoTicket( cliente, this.io );
             // Atender ticket
             socket.atenderTicket( cliente, this.io );
+            // Listado tickets siendo atendidos
+            //socket.ticketsAtendidos( cliente, this.io );
             // Conectar Escritorio
             socket.activarEscritorio( cliente );
             // Desconectar Escritorio

@@ -21,8 +21,10 @@ export const nuevoTicket = (cliente: Socket, io: socketIO.Server ) => {
     });
 }
 export const atenderTicket = (cliente: Socket, io: socketIO.Server ) => {
-    cliente.on('atender-ticket', (desktop) => {
+    cliente.on('atender-ticket', (desktop) => {        
         io.emit('siguiente-ticket', ticketsLista.getNextTicket(desktop));
+        io.emit('tickets-atendidos', ticketsLista.getLastFour());
+        
     });
 }
 export const activarEscritorio = (cliente: Socket) => {
@@ -43,7 +45,11 @@ export const desconectar = ( cliente: Socket, io: socketIO.Server ) => {
         cliente.emit('escritorio-desactivado', ticketsLista.setAvaibleDesktop(args));
     });
 }
-
+// export const ticketsAtendidos = (cliente: Socket, io: socketIO.Server ) => {
+//     cliente.on('tickets-atendidos', () => {
+//         cliente.emit('tickets-atendidos', ticketsLista.getLastFour());
+//     });
+// }
 
 
 

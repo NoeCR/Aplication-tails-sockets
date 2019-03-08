@@ -12,8 +12,7 @@ export class TicketsLista {
     añadirTicket(){
         var num = (this.tickets.length + 1) || 1; 
         var ticket = new Tiket(num);
-        this.tickets.push(ticket);
-        //console.log(this.tickets.length);
+        this.tickets.push(ticket);        
     }
     // Obtener todos los tickets
     getNumTickets(){
@@ -26,17 +25,25 @@ export class TicketsLista {
         var ticket = this.tickets.shift();
         if(ticket){
             ticket.setEscritorio(desktop);
-            this.ultimos4.push(ticket); 
+            this.ultimos4.push(ticket);             
+            if(this.ultimos4.length > 4){
+                this.ultimos4.shift();
+            }
             return ticket;
         }else{
             return 'No hay más tickets';
-        }
-            
+        }            
     }
-    // Obtener los 4 tickets atendidos
-
-    // Eliminar ticket
-
+    // Obtener los 4 tickets atendidos 
+    getLastFour(){        
+        if(this.ultimos4){            
+            return this.ultimos4;
+        }else{
+            console.log('if incorrecto');
+            return 'Todavia no hay tickets atendidos';
+        }
+    }
+    // Eliminar ticket 
     // Obtener escritorio disponible
     getAvaibleDesktop(desktop: number) {
         console.log(this.escritorios.indexOf(desktop));
